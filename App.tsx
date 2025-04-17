@@ -8,21 +8,14 @@
 import React from 'react';
 import type {PropsWithChildren} from 'react';
 import {
-  ScrollView,
   StatusBar,
-  StyleSheet,
   Text,
   useColorScheme,
   View,
+  SafeAreaView,
 } from 'react-native';
 
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+import {Colors} from 'react-native/Libraries/NewAppScreen';
 import PipScreen from './src/pipScreen/PipScreen';
 
 type SectionProps = PropsWithChildren<{
@@ -36,15 +29,6 @@ function App(): React.JSX.Element {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
   };
 
-  /*
-   * To keep the template simple and small we're adding padding to prevent view
-   * from rendering under the System UI.
-   * For bigger apps the recommendation is to use `react-native-safe-area-context`:
-   * https://github.com/AppAndFlow/react-native-safe-area-context
-   *
-   * You can read more about it here:
-   * https://github.com/react-native-community/discussions-and-proposals/discussions/827
-   */
   const safePadding = '5%';
 
   return (
@@ -53,40 +37,30 @@ function App(): React.JSX.Element {
         barStyle={isDarkMode ? 'light-content' : 'dark-content'}
         backgroundColor={backgroundStyle.backgroundColor}
       />
-      <ScrollView style={backgroundStyle}>
-        <View style={{paddingRight: safePadding}}>
-          <Header />
+      <SafeAreaView>
+        <View
+          style={{
+            backgroundColor: '#F5F5DC',
+            padding: safePadding,
+            paddingBottom: safePadding,
+          }}>
+          <Text style={{textAlign: 'center', fontWeight: 'bold', fontSize: 18}}>
+            Picture in Picture Native Android Impementation
+          </Text>
         </View>
+
         <View
           style={{
             backgroundColor: Colors.white,
-            paddingHorizontal: safePadding,
+            padding: safePadding,
             paddingBottom: safePadding,
+            justifyContent: 'center',
           }}>
           <PipScreen />
         </View>
-      </ScrollView>
+      </SafeAreaView>
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-});
 
 export default App;

@@ -22,5 +22,13 @@
             <category android:name="android.intent.category.LAUNCHER" />
         </intent-filter>
       </activity>
+      <activity
+      android:name=".WebViewCustomActivity"
+      android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+      android:launchMode="singleTask"
+      android:resizeableActivity="true"
+      android:supportsPictureInPicture="true"
+      android:configChanges="screenSize|smallestScreenSize|screenLayout|orientation" >
+    </activity>
     </application>
 </manifest>
